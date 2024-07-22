@@ -1,0 +1,84 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+</head>
+<body>
+    <h2>Welcome, {{ username }}!</h2>
+    <a href="{{ url_for('logout') }}">Logout</a>
+</body>
+</html> -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Authentication System in Flask</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='stylehome.css') }}">
+    <style>
+        /* Basic styling for the logo */
+        .logo {
+            width: 100px; /* Adjust size as needed */
+            height: auto;
+            margin-bottom: 20px; /* Space below the logo */
+        }
+
+        /* Styling for the quote */
+        .quote {
+            font-style: italic;
+            color: #666;
+            margin-top: 20px; /* Space above the quote */
+        }
+
+        /* Styling for footer */
+        .footer {
+            margin-top: 20px; /* Space above the footer */
+            font-size: 12px;
+            color: #322a2a;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <!-- Logo -->
+        <img src="{{ url_for('static', filename='logo.png') }}" alt="Logo" class="logo">
+
+        <h1>hello again 😊 did you reserve your seat today?</h1>
+
+        <!-- Random Quote -->
+        <div class="quote">
+            <p>{{ random_quote }}</p>
+        </div>
+
+        <div class="links">
+            <a href="{{ url_for('login') }}" class="button">Login Page</a>
+            <a href="{{ url_for('register') }}" class="button">Register Page</a>
+        </div>
+
+        <br>
+        <br>
+        <div class="quote">
+           
+            <p>“Enlightenment is the unprogrammed state.”-- Jed McKenna </p>
+        </div>
+        <!-- Footer -->
+         <br>
+         <br>
+         <br>
+         <br>
+         <br>
+         <br>
+        <div class="footer">
+            <p>Made with love by Alfa01</p>
+            <p>&copy; {{ 2024 }} All rights reserved.</p>
+        </div>
+    </div>
+</body>
+
+</html>

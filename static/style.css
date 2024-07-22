@@ -1,0 +1,109 @@
+/* style.css */
+
+/* General Body Styling */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f9;
+    margin: 0;
+    padding: 0;
+    color: #333;
+}
+
+/* Container Styling */
+.container {
+    width: 80%;
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 20px;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Welcome and Headers Styling */
+p {
+    font-size: 18px;
+    margin: 0 0 10px 0;
+}
+
+h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #007bff;
+}
+
+/* Bus Seat Reservation Layout */
+.bus {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 20px 0;
+}
+
+.row {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10px;
+}
+
+.seat {
+    width: 40px;
+    height: 40px;
+    background-color: lightgreen;
+    border: 1px solid #ccc;
+    margin: 2px;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+}
+
+.seat.taken {
+    background-color: lightcoral;
+    cursor: not-allowed;
+}
+
+.seat.selected {
+    background-color: darkgreen;
+}
+
+.seat-empty {
+    width: 40px;
+    height: 40px;
+    background-color: transparent;
+    border: none;
+    margin: 2px;
+}
+
+/* Form and Button Styling */
+form {
+    text-align: center;
+    margin-top: 20px;
+}
+
+button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+/* Link Styling */
+a {
+    display: inline-block;
+    margin-top: 20px;
+    text-decoration: none;
+    color: #007bff;
+    font-size: 16px;
+}
+
+a:hover {
+    text-decoration: underline;
+}

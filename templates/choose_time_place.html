@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Choose Time and Place</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='choose_time_and_place.css') }}">
+</head>
+<body>
+    <header>
+        <h2>Choose Time and Place</h2>
+    </header>
+    <div class="container">
+        <form method="POST">
+            <label for="chosen_place">Choose Place:</label>
+            <select id="chosen_place" name="chosen_place" onchange="updateTimes()" required>
+                <option value="">Select a place</option>
+                <option value="zone01">Zone 01</option>
+                <option value="bnidrari">Bnidrari</option>
+                <option value="babelgharbi">Babelgharbi</option>
+            </select>
+
+            <label for="chosen_time">Choose Time:</label>
+            <select id="chosen_time" name="chosen_time" required>
+                <option value="">Select a time</option>
+                <!-- Time options will be dynamically populated based on place selection -->
+            </select>
+            
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+
+    <script>
+        const availableTimes = {{ available_times | tojson }};
+        
+        function updateTimes() {
+            const placeSelect = document.getElementById('chosen_place');
+            const timeSelect = document.getElementById('chosen_time');
+            const selectedPlace = placeSelect.value;
+
+            // Clear current time options
+            timeSelect.innerHTML = '<option value="">Select a time</option>';
+
+            if (selectedPlace && availableTimes[selectedPlace]) {
+                availableTimes[selectedPlace].forEach(time => {
+                    const option = document.createElement('option');
+                    option.value = time;
+                    option.textContent = time;
+                    timeSelect.appendChild(option);
+                });
+            }
+        }
+    </script>
+</body>
+</html>

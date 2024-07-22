@@ -1,0 +1,100 @@
+<!-- iwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Choose Seat</title>
+</head>
+<body>
+    <h2>Choose Seat</h2>
+    <form method="POST">
+        <label for="chosen_seat">Choose Seat:</label>
+        <select id="chosen_seat" name="chosen_seat" required>
+            {% if available_seats %}
+                {% for seat in available_seats %}
+                    <option value="{{ seat }}">{{ seat }}</option>
+                {% endfor %}
+            {% else %}
+                <option value="">No seats available</option>
+            {% endif %}
+        </select>
+        <button type="submit">Submit</button>
+    </form>
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            <ul>
+                {% for message in messages %}
+                    <li>{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    {% endwith %}
+</body>
+</html> -->
+
+ 
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Choosing Available Seat</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <p>Welcome, {{ session['username'] }}!</p>
+        <h1>Choosing Available Seat</h1>
+        <p>Selected Place: {{ chosen_place }}</p>
+        <p>Selected Time: {{ chosen_time }}</p>
+
+        <h1>Bus Seat Reservation</h1>
+
+        <div class="bus">
+            <!-- First Row -->
+            <div class="row">
+                {% for seat in range(1, 7) %}
+                    <div class="seat{% if seat not in available_seats %} taken{% endif %}" id="seat{{ seat }}" data-seat="{{ seat }}"></div>
+                {% endfor %}
+            </div>
+            <!-- Second Row -->
+            <div class="row">
+                {% for seat in range(7, 13) %}
+                    <div class="seat{% if seat not in available_seats %} taken{% endif %}" id="seat{{ seat }}" data-seat="{{ seat }}"></div>
+                {% endfor %}
+            </div>
+            <!-- Third Row -->
+            <div class="row">
+                
+                <div class="seat{% if 13 not in available_seats %} taken{% endif %}" id="seat13" data-seat="13"></div>
+                <div class="seat-empty"></div>
+                <div class="seat-empty"></div>
+                <div class="seat-empty"></div>
+                <div class="seat-empty"></div>
+ 
+                <div class="seat{% if 14 not in available_seats %} taken{% endif %}" id="seat14" data-seat="14"></div>
+            </div>
+            <!-- Fourth Row -->
+            <div class="row">
+                <div class="seat{% if 15 not in available_seats %} taken{% endif %}" id="seat15" data-seat="15"></div>
+                <div class="seat{% if 16 not in available_seats %} taken{% endif %}" id="seat16" data-seat="16"></div>
+                <div class="seat{% if 17 not in available_seats %} taken{% endif %}" id="seat17" data-seat="17"></div>
+                <div class="seat{% if 18 not in available_seats %} taken{% endif %}" id="seat18" data-seat="18"></div>
+                <div class="seat{% if 19 not in available_seats %} taken{% endif %}" id="seat19" data-seat="19"></div>
+                <div class="seat{% if 20 not in available_seats %} taken{% endif %}" id="seat20" data-seat="20"></div>
+            </div>
+        </div>
+
+        <form method="POST" id="seatForm">
+            <input type="hidden" name="chosen_seat" id="chosen_seat" value="">
+            <button type="submit">Submit</button>
+        </form>
+
+        <a href="{{ url_for('logout') }}">Logout</a>
+    </div>
+
+    <script src="{{ url_for('static', filename='app.js') }}"></script>
+</body>
+</html>
